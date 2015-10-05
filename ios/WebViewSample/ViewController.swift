@@ -12,6 +12,7 @@ import AudioToolbox
 class ViewController: UIViewController, UIWebViewDelegate {
 
     @IBOutlet weak var mainWebView: UIWebView!
+    @IBOutlet weak var SecondViewButton: UIButton!
 
     var URL_STRING = "https://moqada.github.io/mobile-webview-example/"
     // var URL_STRING = "http://localhost:8000/index.html"
@@ -45,6 +46,13 @@ class ViewController: UIViewController, UIWebViewDelegate {
         // myscheme 以外はスルー
         return true
     }
+
+    // MARK: Actions
+    @IBAction func tappedSecondViewButton(sender: UIButton) {
+        print("tapped")
+        performSegueWithIdentifier("showSecondView", sender: sender)
+    }
+    
 
 
 }

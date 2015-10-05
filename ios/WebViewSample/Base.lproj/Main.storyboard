@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -24,22 +25,96 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="54R-ah-8B0"/>
                                 </connections>
                             </webView>
+                            <button opaque="NO" alpha="0.5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NbW-wS-Olm">
+                                <rect key="frame" x="20" y="560" width="560" height="30"/>
+                                <animations/>
+                                <color key="backgroundColor" red="0.14399999999999999" green="0.67000000000000004" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <accessibility key="accessibilityConfiguration" label=""/>
+                                <state key="normal" title="Second View">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="tappedSecondViewButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="fMx-dU-fbz"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="NbW-wS-Olm" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="0W2-M6-ien"/>
                             <constraint firstItem="CAl-PZ-hGI" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="8T9-rG-JPM"/>
                             <constraint firstItem="CAl-PZ-hGI" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="G3p-Cf-tp3"/>
+                            <constraint firstItem="NbW-wS-Olm" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="Vai-WW-hlw"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="NbW-wS-Olm" secondAttribute="bottom" constant="10" id="VeX-Rc-5Ev"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="CAl-PZ-hGI" secondAttribute="bottom" id="XlR-DP-IsX"/>
                             <constraint firstAttribute="trailing" secondItem="CAl-PZ-hGI" secondAttribute="trailing" id="cmu-0g-jrc"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="NbW-wS-Olm" secondAttribute="trailing" id="g2o-U9-i6b"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="SecondViewButton" destination="NbW-wS-Olm" id="buI-Gp-HKs"/>
                         <outlet property="mainWebView" destination="CAl-PZ-hGI" id="cBa-gH-TrC"/>
+                        <segue destination="RSV-Iv-VtX" kind="show" identifier="showSecondView" id="aiR-ks-m7k"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="174" y="265"/>
+        </scene>
+        <!--Second View Controller-->
+        <scene sceneID="f4G-c4-t1s">
+            <objects>
+                <viewController id="RSV-Iv-VtX" customClass="SecondViewController" customModule="WebViewSample" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="XaK-1k-fHP"/>
+                        <viewControllerLayoutGuide type="bottom" id="Ofw-rn-jpN"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="1td-7b-Edf">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="VaT-j9-azz">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <subviews>
+                                    <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bff-Lh-CiK">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                        <animations/>
+                                        <items>
+                                            <navigationItem title="Title" id="rLk-z6-qgo">
+                                                <barButtonItem key="rightBarButtonItem" systemItem="stop" id="aib-vN-mV1">
+                                                    <connections>
+                                                        <action selector="CloseView:" destination="RSV-Iv-VtX" id="dwZ-fp-i8R"/>
+                                                    </connections>
+                                                </barButtonItem>
+                                            </navigationItem>
+                                        </items>
+                                    </navigationBar>
+                                    <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wmB-EP-lW0">
+                                        <rect key="frame" x="0.0" y="44" width="600" height="556"/>
+                                        <animations/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </webView>
+                                </subviews>
+                                <animations/>
+                            </stackView>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="VaT-j9-azz" firstAttribute="top" secondItem="1td-7b-Edf" secondAttribute="top" id="MFe-BO-AP6"/>
+                            <constraint firstAttribute="bottom" secondItem="VaT-j9-azz" secondAttribute="bottom" id="Zjk-Bz-sBP"/>
+                            <constraint firstAttribute="trailing" secondItem="VaT-j9-azz" secondAttribute="trailing" id="arb-66-Vdm"/>
+                            <constraint firstItem="VaT-j9-azz" firstAttribute="leading" secondItem="1td-7b-Edf" secondAttribute="leading" id="bkf-lm-IqV"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="CloseButton" destination="aib-vN-mV1" id="wjn-Gk-yiD"/>
+                        <outlet property="mainWebView" destination="wmB-EP-lW0" id="i8F-DT-Aeh"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GkA-zk-GtR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="898" y="292"/>
         </scene>
     </scenes>
 </document>
