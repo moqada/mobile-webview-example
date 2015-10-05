@@ -7,13 +7,14 @@
 //
 
 import UIKit
+import AudioToolbox
 
 class ViewController: UIViewController, UIWebViewDelegate {
 
     @IBOutlet weak var mainWebView: UIWebView!
 
-    // var URL_STRING = "https://github.com/"
-    var URL_STRING = "http://localhost:8000/index.html"
+    var URL_STRING = "https://moqada.github.io/mobile-webview-example/"
+    // var URL_STRING = "http://localhost:8000/index.html"
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,6 +30,20 @@ class ViewController: UIViewController, UIWebViewDelegate {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+
+    func webView(webView: UIWebView, shouldStartLoadWithRequest request: NSURLRequest, navigationType: UIWebViewNavigationType) -> Bool {
+        let url = request.URL
+        let scheme = url!.scheme
+
+        // myscheme の場合は何か処理
+        if scheme == "myscheme" {
+            AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
+            return false
+        }
+
+        // myscheme 以外はスルー
+        return true
     }
 
 
