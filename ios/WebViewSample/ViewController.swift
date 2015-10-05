@@ -12,7 +12,8 @@ class ViewController: UIViewController, UIWebViewDelegate {
 
     @IBOutlet weak var mainWebView: UIWebView!
 
-    var URL_STRING = "https://github.com/"
+    // var URL_STRING = "https://github.com/"
+    var URL_STRING = "http://localhost:8000/index.html"
 
     override func viewDidLoad() {
         super.viewDidLoad()
