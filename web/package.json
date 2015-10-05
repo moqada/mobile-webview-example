@@ -1,0 +1,19 @@
+{
+  "name": "web",
+  "description": "WebView sample",
+  "version": "0.0.0",
+  "author": "moqada <moqada@gmail.com>",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "build": "npm run jade",
+    "deploy": "npm run build && npm run gh-pages",
+    "gh-pages": "gh-pages -d dist",
+    "jade": "jade -o dist src",
+    "prebuild": "rm -rf dist && mkdir dist"
+  },
+  "devDependencies": {
+    "gh-pages": "^0.4.0",
+    "jade": "^1.11.0"
+  }
+}
